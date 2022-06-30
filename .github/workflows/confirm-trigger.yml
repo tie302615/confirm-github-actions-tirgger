@@ -4,23 +4,23 @@ on:
   push:
     branches:
       - develop
-      - production
+      - master
   pull_request:
     branches:
       - develop
-      - production
+      - master
     types:
       - closed
   workflow_dispatch:
     inputs:
-      update_level:
-        description: "Select increment level."
+      select_item:
+        description: "Select the item."
         type: choice
         options:
-          - not_update
-          - patch
-          - minor
-          - major
+          - none
+          - foo
+          - bar
+          - baz
 
 jobs:
   test:
@@ -41,3 +41,4 @@ jobs:
           echo "github.base_ref=${{ github.base_ref }}"
           echo "GITHUB_HEAD_REF=${GITHUB_HEAD_REF}"
           echo "GITHUB_BASE_REF=${GITHUB_BASE_REF}"
+          echo "github.event.inputs.select_item=${github.event.inputs.select_item}"
