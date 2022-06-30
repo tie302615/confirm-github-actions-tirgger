@@ -10,6 +10,7 @@ on:
       - develop
       - master
     types:
+      - opened
       - closed
   workflow_dispatch:
 
