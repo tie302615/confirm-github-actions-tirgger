@@ -1,21 +1,28 @@
-name: Confirm pull request trigger
+name: Confirm trigger
 
 on:
-  pull_request:
+  push:
     branches:
       - develop
       - testing
       - production
+  pull_request:
+    branches:
+      - develop
+    types:
+      - closed
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout resource
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Show branches
+      - name: Show
         run: |
+          echo "github.event_name=${{ github.event_name }}"
+          echo "github.event.pull_request.merged=${{ github.event.pull_request.merged }}"
           git branch
           echo "source => ${GITHUB_HEAD_REF}"
           echo "target => ${GITHUB_BASE_REF}"
