@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - develop
-      - testing
       - production
   pull_request:
     branches:
       - develop
-      - testing
       - production
     types:
       - closed
@@ -33,9 +31,13 @@ jobs:
 
       - name: Show
         run: |
+          echo "git branch --show-curent=$(git branch --show-curent)"
           echo "github.event_name=${{ github.event_name }}"
           echo "github.event.pull_request.merged=${{ github.event.pull_request.merged }}"
-          git branch
-          echo "source => ${GITHUB_HEAD_REF}"
-          echo "target => ${GITHUB_BASE_REF}"
-          echo "${{ toJson(github) }}"
+          echo "GITHUB_REF=${GITHUB_REF}"
+          echo "GITHUB_REF#refs/heads/=${GITHUB_REF#refs/heads/}"
+          echo "github.ref_name=${{ github.ref_name }}"
+          echo "github.head_ref=${{ github.head_ref }}"
+          echo "github.base_ref=${{ github.base_ref }}"
+          echo "GITHUB_HEAD_REF=${GITHUB_HEAD_REF}"
+          echo "GITHUB_BASE_REF=${GITHUB_BASE_REF}"
