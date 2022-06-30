@@ -10,6 +10,8 @@ on:
       - develop
       - master
     types:
+      - opened
+      - edited
       - closed
   workflow_dispatch:
     inputs:
@@ -31,7 +33,7 @@ jobs:
 
       - name: Show
         run: |
-          echo "git branch --show-curent=$(git branch --show-curent)"
+          echo "git branch --show-current=$(git branch --show-current)"
           echo "github.event_name=${{ github.event_name }}"
           echo "github.event.pull_request.merged=${{ github.event.pull_request.merged }}"
           echo "GITHUB_REF=${GITHUB_REF}"
