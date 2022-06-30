@@ -13,6 +13,18 @@ on:
       - production
     types:
       - closed
+  workflow_dispatch:
+    inputs:
+      update_level:
+        description: "Select increment level."
+        type: choice
+#         required: true
+#         default: "none"
+        options:
+          - none # .app-versionをインクリメントしません
+          - patch
+          - minor
+          - major
 
 jobs:
   test:
