@@ -1,4 +1,4 @@
-name: Confirm trigger
+name: Confirm branch name
 
 on:
   push:
@@ -10,19 +10,8 @@ on:
       - develop
       - master
     types:
-      - opened
-      - edited
       - closed
   workflow_dispatch:
-    inputs:
-      select_item:
-        description: "Select the item."
-        type: choice
-        options:
-          - none
-          - foo
-          - bar
-          - baz
 
 jobs:
   test:
@@ -43,4 +32,3 @@ jobs:
           echo "github.base_ref                   ==>>  '${{ github.base_ref }}'"
           echo "GITHUB_HEAD_REF                   ==>>  '${GITHUB_HEAD_REF}'"
           echo "GITHUB_BASE_REF                   ==>>  '${GITHUB_BASE_REF}'"
-          echo "github.event.inputs.select_item   ==>>  '${{ github.event.inputs.select_item }}'"
