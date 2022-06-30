@@ -18,10 +18,8 @@ on:
       update_level:
         description: "Select increment level."
         type: choice
-#         required: true
-#         default: "none"
         options:
-          - none # .app-versionをインクリメントしません
+          - not_update
           - patch
           - minor
           - major
