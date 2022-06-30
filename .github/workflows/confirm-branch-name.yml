@@ -9,8 +9,15 @@ on:
     branches:
       - develop
       - master
+    # 未指定時のデフォルトは[opened, synchronize, reopened]でcloseは指定しないと発動しない
     types:
+      # 作成された場合
       - opened
+      # ソース(マージ元)ブランチが更新された場合
+      - synchronize
+      # 一度クローズされたPRが再度開かれた場合
+      - reopened
+      # クローズされた場合(マージしてクローズされかは `github.event.pull_request.merged`がtrueかで判定できる)
       - closed
   workflow_dispatch:
 
@@ -33,4 +40,10 @@ jobs:
           echo "github.base_ref                   ==>>  '${{ github.base_ref }}'"
           echo "GITHUB_HEAD_REF                   ==>>  '${GITHUB_HEAD_REF}'"
           echo "GITHUB_BASE_REF                   ==>>  '${GITHUB_BASE_REF}'"
+          echo "github.event.pull_request.title   ==>>  '${{ github.event.pull_request.title }}'"
+          echo "github.event.pull_request.head.sha  ==>>  '${{ github.event.pull_request.head.sha }}'"
+          echo "github.event.head_commit.message  ==>>  '${{ github.event.head_commit.message }}'"
+          echo " --------------------git log -1 --format:%s --------------------"
+          git log -1 --format=%B
+          echo "-------------------- toJson(github) --------------------"
           echo '${{ toJson(github) }}'
