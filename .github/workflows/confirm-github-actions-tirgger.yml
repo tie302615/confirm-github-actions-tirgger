@@ -1,4 +1,4 @@
-name: Confirm branch name
+name: Confirm Github Actions trigger
 
 on:
   push:
