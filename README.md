@@ -5,3 +5,4 @@ This is functions list.
 # Add functions
 
 - function001
+- function002
