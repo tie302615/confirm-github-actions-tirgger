@@ -6,9 +6,10 @@ on:
       - develop
       - master
   pull_request:
+    # ベースブランチ（マージ先）を指定してフィルタ
     branches:
-      - develop
       - master
+      - develop
     # 未指定時のデフォルトは[opened, synchronize, reopened]でcloseは指定しないと発動しない
     types:
       # 作成された場合
@@ -36,7 +37,8 @@ jobs:
           echo "github.sha                                       ==>> '${{ github.sha }}'"
           echo "github.head_ref                                  ==>> '${{ github.head_ref }}'"
           echo "github.base_ref                                  ==>> '${{ github.base_ref }}'"
-          echo "github.action_repository                         ==>> '${{ github.action_repository }}'"
+          echo "github.event.action                              ==>> '${{ github.event.action }}'"
+          echo "github.event.number                              ==>> '${{ github.event.number }}'"
           echo "github.event.commits[0].id                       ==>> '${{ github.event.commits[0].id }}'"
           echo "github.event.commits[0].timestamp                ==>> '${{ github.event.commits[0].timestamp }}'"
           echo "github.event.commits[0].message                  ==>> '${{ github.event.commits[0].message }}'"
