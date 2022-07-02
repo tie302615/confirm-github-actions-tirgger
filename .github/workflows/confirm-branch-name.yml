@@ -53,7 +53,7 @@ jobs:
           echo "GITHUB_REF#refs/heads/                   ==>> '${GITHUB_REF#refs/heads/}'"
           echo "GITHUB_HEAD_REF                          ==>> '${GITHUB_HEAD_REF}'"
           echo "GITHUB_BASE_REF                          ==>> '${GITHUB_BASE_REF}'"
-          echo "-------------------- git log -1 --format:%s --------------------"
+          echo "-------------------- git log -1 --format:%B --------------------"
           git log -1 --format=%B
-          echo "-------------------- toJson(github.event) --------------------"
-          echo '${{ toJson(github.event) }}'
+          echo "-------------------- toJson(github) --------------------"
+          echo '${{ toJson(github) }}'
