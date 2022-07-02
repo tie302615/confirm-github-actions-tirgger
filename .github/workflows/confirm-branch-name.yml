@@ -47,4 +47,4 @@ jobs:
           echo "-------------------- git log -1 --format:%s --------------------"
           git log -1 --format=%B
           echo "-------------------- toJson(github.event.push) --------------------"
-          echo ' ${{ toJson(github.event.push) }}'
+          echo ' ${{ toJson(github.event) }}'
