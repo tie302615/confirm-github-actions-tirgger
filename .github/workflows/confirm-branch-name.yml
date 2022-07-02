@@ -55,7 +55,5 @@ jobs:
           echo "GITHUB_BASE_REF                          ==>> '${GITHUB_BASE_REF}'"
           echo "-------------------- git log -1 --format:%s --------------------"
           git log -1 --format=%B
-          echo "-------------------- toJson(github.event.push) --------------------"
-          echo '${{ toJson(github.event.push) }}'
-          echo "-------------------- toJson(github.event.pull_request) --------------------"
-          echo '${{ toJson(github.event.pull_request) }}'
+          echo "-------------------- toJson(github.event) --------------------"
+          echo '${{ toJson(github.event) }}'
