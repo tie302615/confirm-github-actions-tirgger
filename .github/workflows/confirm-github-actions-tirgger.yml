@@ -31,7 +31,6 @@ jobs:
       - name: Show
         run: |
           echo "github.event_name                                ==>> '${{ github.event_name }}'"
-          echo "github.action                                    ==>> '${{ github.action }}'"
           echo "github.actor                                     ==>> '${{ github.actor }}'"
           echo "github.ref                                       ==>> '${{ github.ref }}'"
           echo "github.sha                                       ==>> '${{ github.sha }}'"
